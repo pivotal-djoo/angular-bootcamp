@@ -8,13 +8,17 @@ import {DataService} from '../../services/data.service'
 })
 export class PostComponent implements OnInit {
     noteText: string
-    postButtonEnabled: boolean
+    postButtonDisabled = true
 
     constructor(public dataService: DataService) {
     }
 
     ngOnInit() {
         console.log('OnInit!!')
+    }
+
+    checkFieldEmpty() {
+        this.postButtonDisabled = this.noteText.length == 0
     }
 
     post() {
