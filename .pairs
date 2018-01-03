@@ -1,0 +1,8 @@
+pairs:
+    kn: Ka Hin Ng; kang
+    dj: David Joo; djoo
+email:
+    prefix: pair
+    domain: pivotal.io
+    no_solo_prefix: true
+global: true
