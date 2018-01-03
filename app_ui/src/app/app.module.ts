@@ -9,6 +9,7 @@ import {HttpModule} from '@angular/http'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {MatButtonModule, MatCheckboxModule, MatIconModule, MatInputModule, MatToolbarModule} from '@angular/material'
 import {HttpClientModule} from '@angular/common/http'
+import {MaterialModule} from './material.module'
 
 
 @NgModule({
@@ -21,12 +22,8 @@ import {HttpClientModule} from '@angular/common/http'
         FormsModule,
         HttpModule,
         HttpClientModule,
-        MatButtonModule,
-        MatCheckboxModule,
         BrowserAnimationsModule,
-        MatInputModule,
-        MatToolbarModule,
-        MatIconModule
+        MaterialModule
     ],
     providers: [
         DataService

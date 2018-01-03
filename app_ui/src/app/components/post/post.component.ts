@@ -14,7 +14,6 @@ export class PostComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('OnInit!!')
     }
 
     checkFieldEmpty() {

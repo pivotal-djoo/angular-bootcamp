@@ -5,6 +5,8 @@ import {FormsModule} from '@angular/forms'
 import {DataService} from '../../services/data.service'
 import {FakeDataService} from '../../spec-utils'
 import {Observable} from 'rxjs/Observable'
+import {MaterialModule} from '../../material.module'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 describe('PostComponent', () => {
     let component: PostComponent
@@ -17,7 +19,9 @@ describe('PostComponent', () => {
                 PostComponent,
             ],
             imports: [
-                FormsModule
+                FormsModule,
+                BrowserAnimationsModule,
+                MaterialModule
             ],
             providers: [
                 {provide: DataService, useClass: FakeDataService}
