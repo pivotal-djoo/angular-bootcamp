@@ -1,0 +1,9 @@
+<div>
+  <form class='notes-form'>
+    <mat-form-field class='notes-full-width'>
+    <textarea placeholder='Enter notes...' [(ngModel)]='noteText' [ngModelOptions]='{standalone: true}'
+              matInput matTextareaAutosize matAutosizeMinRows='4' matAutosizeMaxRows='10' cols='40' rows='4'></textarea>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color='primary' (click)='post()' [disabled]='postButtonEnabled'>Post</button>
+</div>
