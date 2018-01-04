@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angular-bootcamp App', () => {
+xdescribe('angular-bootcamp App', () => {
   let page: AppPage;
 
   beforeEach(() => {
