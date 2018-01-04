@@ -1,0 +1,26 @@
+resources:
+  - name: angular-bootcamp-repo
+    type: git
+    source:
+      uri: https://github.com/xtreme-david-joo/angular-bootcamp.git
+      branch: master
+
+jobs:
+- name: unit-tests
+  plan:
+  - get: angular-bootcamp-repo
+    trigger: false
+  - task: run build
+    timeout: 59m
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: teracy/angular-cli}
+      inputs:
+        - name: angular-bootcamp-repo
+      run:
+        path: bash
+        args:
+          - "-c"
+          - "pwd && ls -la && cd ./angular-bootcamp-repo && sh ./scripts/unit-test.sh"
