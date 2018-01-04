@@ -16,7 +16,9 @@ jobs:
       platform: linux
       image_resource:
         type: docker-image
-        source: {repository: teracy/angular-cli}
+        source:
+          repository: djoo/angular-spring
+          tag: 0.1
       inputs:
         - name: angular-bootcamp-repo
       run:
@@ -24,3 +26,24 @@ jobs:
         args:
           - "-c"
           - "pwd && ls -la && cd ./angular-bootcamp-repo && sh ./scripts/unit-test.sh"
+
+- name: acceptance-tests
+  plan:
+  - get: angular-bootcamp-repo
+    trigger: false
+  - task: run build
+    timeout: 59m
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: djoo/angular-spring
+          tag: 0.1
+      inputs:
+        - name: angular-bootcamp-repo
+      run:
+        path: bash
+        args:
+          - "-c"
+          - "pwd && ls -la && cd ./angular-bootcamp-repo && sh ./scripts/acceptance-test.sh"
