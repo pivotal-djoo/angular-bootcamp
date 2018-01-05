@@ -14,9 +14,13 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
-group = 'io.pivotal'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+	baseName = 'angular-bootcamp'
+	version = '0.0.1-SNAPSHOT'
+}
 
 repositories {
 	mavenCentral()
@@ -29,6 +33,6 @@ dependencies {
     compile("com.h2database:h2")
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jdk8')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+	compile('org.projectlombok:lombok:1.16.16')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
-

@@ -1,0 +1,7 @@
+---
+applications:
+- name: angular-bootcamp-api
+  memory: 1G
+  instance: 1
+  path: ../output/angular-bootcamp-0.0.1-SNAPSHOT.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
