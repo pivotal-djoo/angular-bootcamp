@@ -28,4 +28,10 @@ public class NotesController {
     public ResponseEntity<List<Note>> getNotes() {
         return new ResponseEntity<>(notesRepository.findAll(), HttpStatus.OK);
     }
+
+    @DeleteMapping("/all")
+    public ResponseEntity deleteAllNotes() {
+        notesRepository.deleteAll();
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

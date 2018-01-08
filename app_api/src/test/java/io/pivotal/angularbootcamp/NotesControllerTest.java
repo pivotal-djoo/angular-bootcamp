@@ -24,6 +24,7 @@ import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -74,6 +75,14 @@ public class NotesControllerTest {
         mvc.perform(get("/"))
             .andExpect(status().isOk())
             .andExpect(content().json(asJsonString(notes)));
+    }
+
+    @Test
+    public void deleteAllNotes() throws Exception {
+        mvc.perform(delete("/all"))
+            .andExpect(status().isOk());
+
+        verify(notesRepository, times(1)).deleteAll();
     }
 
     public static String asJsonString(final Object obj) {
