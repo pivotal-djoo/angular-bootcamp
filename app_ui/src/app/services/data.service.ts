@@ -4,11 +4,12 @@ import {Observable} from 'rxjs/Observable'
 import {NotesResponse} from './models/notes-response'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/take'
+import {environment} from '../../environments/environment'
 
 @Injectable()
 export class DataService {
 
-  addUrl = 'http://angular-bootcamp.cfapps.io/add'
+  addUrl = environment.api + '/add'
 
   constructor(private http: Http) { }
 

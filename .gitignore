@@ -40,7 +40,7 @@ secrets.yml
 
 #Angular
 
-/dist/
+dist
 bazel-*
 e2e_test.*
 node_modules

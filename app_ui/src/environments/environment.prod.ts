@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
-};
+    production: true,
+    api: 'http://angular-bootcamp-api.cfapps.io'
+}

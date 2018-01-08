@@ -76,7 +76,7 @@ jobs:
           - "-c"
           - "cd ./angular-bootcamp-repo && sh ./scripts/acceptance-test.sh"
 
-- name: deploy-api
+- name: deploy
   serial: true
   plan:
   - get: angular-bootcamp-repo
@@ -98,7 +98,7 @@ jobs:
         path: bash
         args:
           - "-c"
-          - "cd ./angular-bootcamp-repo && ./gradlew build && mv ./app_api/build/libs/angular-bootcamp-0.0.1-SNAPSHOT.jar ../output/. && pwd && ls -la ./app_api && ls -la ./app_api/build && ls -la ./app_api/build/libs"
+          - "sh ./angular-bootcamp-repo/scripts/build-ci.sh"
   - put: pws-labs-playground
     params:
       manifest: ./angular-bootcamp-repo/manifest.yml
