@@ -1,6 +1,6 @@
-<div>
-  <form class='notes-form'>
-    <mat-form-field class='notes-full-width'>
+<div class="post-container">
+  <form class='post-form'>
+    <mat-form-field class='post-full-width'>
     <textarea id='notes-input' placeholder='Enter notes...' [(ngModel)]='noteText' [ngModelOptions]='{standalone: true}' (ngModelChange)='checkFieldEmpty()'
               matInput matTextareaAutosize matAutosizeMinRows='4' matAutosizeMaxRows='10' cols='40' rows='4'></textarea>
     </mat-form-field>

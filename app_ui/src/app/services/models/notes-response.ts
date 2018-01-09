@@ -1,3 +1,6 @@
+import {Note} from './note'
+
 export interface NotesResponse {
-  status: number
+    status: number,
+    notes?: Array<Note>
 }

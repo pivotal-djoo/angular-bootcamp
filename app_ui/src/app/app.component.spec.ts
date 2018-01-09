@@ -6,13 +6,17 @@ import {DataService} from './services/data.service'
 import {FakeDataService} from './spec-utils'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {MaterialModule} from './material.module'
+import {NotesComponent} from './components/notes/notes.component'
+import {NoteItemComponent} from './components/note-item/note-item.component'
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
-                PostComponent
+                PostComponent,
+                NotesComponent,
+                NoteItemComponent
             ],
             imports: [
                 FormsModule,

@@ -1,9 +1,13 @@
-.notes-form {
+.post-container {
+  margin: 1.2rem;
+}
+
+.post-form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
 }
 
-.notes-full-width {
+.post-full-width {
   width: 100%;
 }

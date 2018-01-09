@@ -26,16 +26,15 @@ describe('PostComponent', () => {
             providers: [
                 {provide: DataService, useClass: FakeDataService}
             ]
-        })
-            .compileComponents()
-
-        fakeDataService = TestBed.get(DataService)
+        }).compileComponents()
     }))
 
     beforeEach(() => {
         fixture = TestBed.createComponent(PostComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
+
+        fakeDataService = TestBed.get(DataService)
     })
 
     describe('on clicking post button', () => {

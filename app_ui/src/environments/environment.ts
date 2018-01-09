@@ -5,5 +5,5 @@
 
 export const environment = {
     production: false,
-    api: 'http://angular-bootcamp-api.cfapps.io'
+    api: 'http://localhost:8181'
 }
