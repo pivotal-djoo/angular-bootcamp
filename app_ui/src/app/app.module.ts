@@ -9,8 +9,9 @@ import {DataService} from './services/data.service'
 import {HttpModule} from '@angular/http'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {HttpClientModule} from '@angular/common/http'
-import {MaterialModule} from './material.module';
-import { NoteItemComponent } from './components/note-item/note-item.component'
+import {MaterialModule} from './material.module'
+import {NoteItemComponent} from './components/note-item/note-item.component'
+import {EventsService} from './services/events.service'
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NoteItemComponent } from './components/note-item/note-item.component'
         MaterialModule
     ],
     providers: [
-        DataService
+        DataService,
+        EventsService
     ],
     bootstrap: [AppComponent]
 })

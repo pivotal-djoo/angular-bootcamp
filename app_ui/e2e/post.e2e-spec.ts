@@ -11,12 +11,13 @@ describe('post', () => {
         expect(element(by.buttonText("Post")).isEnabled()).toBeTruthy()
     })
 
-    it('should clear input field after post button is clicked', ()=> {
+    it('should clear input field and disable button after post button is clicked', ()=> {
         browser.get('/')
 
         element(by.id('notes-input')).sendKeys('some notes for testing...')
         element(by.buttonText('Post')).click()
 
         expect(element(by.id('notes-input')).getAttribute('value')).toEqual("")
+        expect(element(by.buttonText("Post")).isEnabled()).toBeFalsy()
     })
 })

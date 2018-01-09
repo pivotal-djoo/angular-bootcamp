@@ -17,8 +17,6 @@ public class NotesController {
 
     @PostMapping("/add")
     public ResponseEntity addNote(@RequestBody Note newNote) {
-        System.out.print("New note received: " + newNote);
-
         notesRepository.save(newNote);
 
         return new ResponseEntity(HttpStatus.CREATED);

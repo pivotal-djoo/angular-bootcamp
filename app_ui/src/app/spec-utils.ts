@@ -20,3 +20,10 @@ export class FakeDataService {
     return null
   }
 }
+
+export class FakeEventsService {
+    postEvent = null
+
+    notifyPostEvent() {
+    }
+}

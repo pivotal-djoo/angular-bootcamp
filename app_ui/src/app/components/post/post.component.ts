@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {DataService} from '../../services/data.service'
+import {EventsService} from '../../services/events.service'
 
 @Component({
     selector: 'post',
@@ -10,7 +11,7 @@ export class PostComponent implements OnInit {
     noteText: string
     postButtonDisabled = true
 
-    constructor(public dataService: DataService) {
+    constructor(public dataService: DataService, public eventsService: EventsService) {
     }
 
     ngOnInit() {
@@ -21,8 +22,14 @@ export class PostComponent implements OnInit {
     }
 
     post() {
-        console.log('sending notes: ' + this.noteText)
-        this.dataService.postNotes(this.noteText).subscribe()
+        this.dataService.postNotes(this.noteText)
+            .subscribe(res => {
+                    if (res.status == 201) {
+                        this.eventsService.notifyPostEvent()
+                    }
+                }
+            )
         this.noteText = ''
+        this.checkFieldEmpty()
     }
 }
