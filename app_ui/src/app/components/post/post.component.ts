@@ -23,5 +23,6 @@ export class PostComponent implements OnInit {
     post() {
         console.log('sending notes: ' + this.noteText)
         this.dataService.postNotes(this.noteText).subscribe()
+        this.noteText = ''
     }
 }
