@@ -34,5 +34,8 @@ dependencies {
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jdk8')
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
 	compile('org.projectlombok:lombok:1.16.16')
+	compile('mysql:mysql-connector-java')
+	compile('org.flywaydb:flyway-core:4.2.0')
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

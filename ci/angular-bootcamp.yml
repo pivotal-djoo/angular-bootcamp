@@ -101,4 +101,4 @@ jobs:
           - "sh ./angular-bootcamp-repo/scripts/build-ci.sh"
   - put: pws-labs-playground
     params:
-      manifest: ./angular-bootcamp-repo/manifest.yml
+      manifest: ./angular-bootcamp-repo/manifest-ci.yml
