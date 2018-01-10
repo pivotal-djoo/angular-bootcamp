@@ -92,7 +92,4 @@ RUN yarn global add @angular/cli@$NG_CLI_VERSION && rm -rf $(yarn cache dir)
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-RUN npm install -g protractor@5.2.2 \
-    && webdriver-manager update
-
 CMD [ "node" ]
