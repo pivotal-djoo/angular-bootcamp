@@ -1,0 +1,15 @@
+---
+applications:
+- name: angular-bootcamp-api
+  memory: 1G
+  instance: 1
+  path: app_api/build/libs/angular-bootcamp-0.0.1-SNAPSHOT.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  env:
+    SPRING_PROFILES_ACTIVE: pcfdev
+
+- name: angular-bootcamp-ui
+  memory: 1G
+  instance: 1
+  path: app_ui/dist
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack
