@@ -1,0 +1,12 @@
+---
+spring:
+  application:
+    name: angular-bootcamp-api
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: ''
+
+server:
+  port: 8181

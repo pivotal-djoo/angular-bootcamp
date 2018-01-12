@@ -79,7 +79,7 @@ jobs:
         path: bash
         args:
           - "-c"
-          - "cd ./angular-bootcamp-repo && ./gradlew test"
+          - "cd ./angular-bootcamp-repo && SPRING_PROFILES_ACTIVE=test ./gradlew test"
 
 - name: acceptance-tests
   plan:
