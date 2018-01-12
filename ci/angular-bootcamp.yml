@@ -1,3 +1,14 @@
+groups:
+- name: Main
+  jobs:
+  - ui-unit-tests
+  - api-unit-tests
+  - acceptance-tests
+  - deploy
+- name: DockerHub
+  jobs:
+  - update-docker-image
+
 resources:
   - name: angular-bootcamp-repo
     type: git
@@ -34,14 +45,14 @@ jobs:
   plan:
   - get: angular-bootcamp-repo
     trigger: true
-  - task: run build
+  - task: Run UI Unit Tests
     timeout: 59m
     config:
       platform: linux
       image_resource:
         type: docker-image
         source:
-          repository: djoo/angular-bootcamp
+          repository: djoo/angular-spring
       inputs:
         - name: angular-bootcamp-repo
       run:
@@ -54,14 +65,14 @@ jobs:
   plan:
   - get: angular-bootcamp-repo
     trigger: true
-  - task: run build
+  - task: Run API Unit Tests
     timeout: 59m
     config:
       platform: linux
       image_resource:
         type: docker-image
         source:
-          repository: djoo/angular-bootcamp
+          repository: djoo/angular-spring
       inputs:
         - name: angular-bootcamp-repo
       run:
@@ -74,14 +85,14 @@ jobs:
   plan:
   - get: angular-bootcamp-repo
     trigger: true
-  - task: run build
+  - task: Run Acceptance Tests
     timeout: 59m
     config:
       platform: linux
       image_resource:
         type: docker-image
         source:
-          repository: djoo/angular-bootcamp
+          repository: djoo/angular-spring
       inputs:
         - name: angular-bootcamp-repo
       run:
@@ -96,14 +107,14 @@ jobs:
   - get: angular-bootcamp-repo
     trigger: true
     passed: [ui-unit-tests, api-unit-tests, acceptance-tests]
-  - task: run build
+  - task: Build
     timeout: 59m
     config:
       platform: linux
       image_resource:
         type: docker-image
         source:
-          repository: djoo/angular-bootcamp
+          repository: djoo/angular-spring
       inputs:
         - name: angular-bootcamp-repo
       outputs:
@@ -116,3 +127,4 @@ jobs:
   - put: pws-labs-playground
     params:
       manifest: ./angular-bootcamp-repo/manifest-ci.yml
+      current_app_name: [ angular-bootcamp-api, angular-bootcamp-ui ]
