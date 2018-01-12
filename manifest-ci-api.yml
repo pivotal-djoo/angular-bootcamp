@@ -7,9 +7,3 @@ applications:
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
   services:
   - db
-
-- name: angular-bootcamp-ui
-  memory: 1G
-  instance: 1
-  path: ../output/dist
-  buildpack: https://github.com/cloudfoundry/staticfile-buildpack

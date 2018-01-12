@@ -1,7 +1,7 @@
 cd ./angular-bootcamp-repo
 
 # Build API
-./gradlew build
+./gradlew build -x test
 
 # Copy API to output folder
 cp ./app_api/build/libs/angular-bootcamp-0.0.1-SNAPSHOT.jar ../output

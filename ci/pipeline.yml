@@ -59,7 +59,7 @@ jobs:
         path: bash
         args:
           - "-c"
-          - "cd ./angular-bootcamp-repo && sh ./scripts/unit-test.sh"
+          - "cd ./angular-bootcamp-repo && sh ./scripts/ui-unit-test.sh"
 
 - name: api-unit-tests
   plan:
@@ -124,7 +124,12 @@ jobs:
         args:
           - "-c"
           - "sh ./angular-bootcamp-repo/scripts/build-ci.sh"
-  - put: pws-labs-playground
-    params:
-      manifest: ./angular-bootcamp-repo/manifest-ci.yml
-      current_app_name: [ angular-bootcamp-api, angular-bootcamp-ui ]
+  - aggregate:
+    - put: pws-labs-playground
+      params:
+        manifest: ./angular-bootcamp-repo/manifest-ci-api.yml
+        current_app_name: angular-bootcamp-api
+    - put: pws-labs-playground
+      params:
+        manifest: ./angular-bootcamp-repo/manifest-ci-ui.yml
+        current_app_name: angular-bootcamp-ui
