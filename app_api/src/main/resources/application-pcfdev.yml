@@ -1,8 +1,8 @@
 ---
-spring:
-  datasource:
-    url: jdbc:mysql://10.74.5.143:3306/angular-bootcamp-pcfdev?useSSL=false
-    username: bootcamper
-    password: password
+#spring:
+#  datasource:
+#    url: jdbc:mysql://10.74.5.143:3306/angular-bootcamp-pcfdev?useSSL=false
+#    username: bootcamper
+#    password: password
 server:
   port: 8181

@@ -2,25 +2,23 @@ package io.pivotal.angularbootcamp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.pivotal.angularbootcamp.models.Note;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -30,7 +28,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 @SpringBootTest
 public class NotesControllerTest {
 
@@ -45,19 +43,19 @@ public class NotesControllerTest {
 
     private MockMvc mvc;
 
-    @Before
+    @BeforeEach
     public void setup() {
         mvc = MockMvcBuilders
-            .standaloneSetup(subject)
-            .build();
+                .standaloneSetup(subject)
+                .build();
     }
 
     @Test
     public void addNote() throws Exception {
         mvc.perform(post("/add")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(asJsonString(Note.builder().content("new note!").build())))
-            .andExpect(status().isCreated());
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(Note.builder().content("new note!").build())))
+                .andExpect(status().isCreated());
 
         verify(notesRepository, times(1)).save(argCaptor.capture());
         assertThat(argCaptor.getValue().getContent()).isEqualTo("new note!");
@@ -66,21 +64,21 @@ public class NotesControllerTest {
     @Test
     public void getAllNotes() throws Exception {
         List<Note> notes = asList(
-            Note.builder().content("first note").build(),
-            Note.builder().content("second note").build()
+                Note.builder().content("first note").build(),
+                Note.builder().content("second note").build()
         );
 
         when(notesRepository.findAll()).thenReturn(notes);
 
         mvc.perform(get("/"))
-            .andExpect(status().isOk())
-            .andExpect(content().json(asJsonString(notes)));
+                .andExpect(status().isOk())
+                .andExpect(content().json(asJsonString(notes)));
     }
 
     @Test
     public void deleteAllNotes() throws Exception {
         mvc.perform(delete("/all"))
-            .andExpect(status().isOk());
+                .andExpect(status().isOk());
 
         verify(notesRepository, times(1)).deleteAll();
     }

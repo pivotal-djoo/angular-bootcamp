@@ -5,9 +5,5 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-  datasource:
-    url: jdbc:mysql://localhost:3306/angular-bootcamp-db?useSSL=false
-    username: bootcamper
-    password: password
 server:
   port: 8181
