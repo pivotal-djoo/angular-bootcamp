@@ -3,6 +3,7 @@ spring:
   application:
     name: angular-bootcamp-api
   jpa:
+    database: mysql
     hibernate:
       ddl-auto: update
   datasource:
