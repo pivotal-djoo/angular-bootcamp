@@ -14,7 +14,7 @@ resources:
     type: git
     source:
       uri: https://github.com/xtreme-david-joo/angular-bootcamp.git
-      branch: master
+      branch: java11
 
   - name: pws-labs-playground
     type: cf
