@@ -4,6 +4,7 @@ groups:
   - ui-unit-tests
   - api-unit-tests
   - acceptance-tests
+  - api-build
   - deploy
 - name: DockerHub
   jobs:
@@ -44,7 +45,7 @@ jobs:
 - name: ui-unit-tests
   plan:
   - get: angular-bootcamp-repo
-    trigger: true
+    trigger: false
   - task: Run UI Unit Tests
     timeout: 59m
     config:
@@ -64,7 +65,7 @@ jobs:
 - name: api-unit-tests
   plan:
   - get: angular-bootcamp-repo
-    trigger: true
+    trigger: false
   - task: Run API Unit Tests
     timeout: 59m
     config:
@@ -85,7 +86,7 @@ jobs:
 - name: acceptance-tests
   plan:
   - get: angular-bootcamp-repo
-    trigger: true
+    trigger: false
   - task: Run Acceptance Tests
     timeout: 59m
     config:
@@ -101,6 +102,44 @@ jobs:
         args:
           - "-c"
           - "cd ./angular-bootcamp-repo && sh ./scripts/acceptance-test.sh"
+
+- name: api-build
+  plan:
+    - get: angular-bootcamp-repo
+      trigger: true
+    - task: Build API Jar file
+      timeout: 59m
+      config:
+        platform: linux
+        image_resource:
+          type: docker-image
+          source:
+            repository: openjdk
+            tag: 11.0.13-oracle
+        inputs:
+          - name: angular-bootcamp-repo
+        outputs:
+          - name: output
+        run:
+          path: bash
+          args:
+            - "-c"
+            - "cd ./angular-bootcamp-repo/app_api && ./gradlew build -x test && cp ./build/libs/angular-bootcamp-0.0.1-SNAPSHOT.jar ../../output && cp ../manifest-ci-api.yml ../../output"
+    - task: Build API Jar file
+      timeout: 59m
+      config:
+        platform: linux
+        image_resource:
+          type: docker-image
+          source:
+            repository: governmentpaas/cf-cli
+        inputs:
+          - name: output
+        run:
+          path: bash
+          args:
+            - "-c"
+            - "cd ./output && cf login --sso-passcode ((tas_passcode)) -o pivot-ikanshyn -s dev && cf push -f manifest-ci-api.yml"
 
 - name: deploy
   serial: true

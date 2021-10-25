@@ -5,5 +5,3 @@ applications:
   instance: 1
   path: ../output/angular-bootcamp-0.0.1-SNAPSHOT.jar
   buildpack: https://github.com/cloudfoundry/java-buildpack.git
-  services:
-  - db
